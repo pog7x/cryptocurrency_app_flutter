@@ -21,4 +21,11 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: ios-build
-        path: build/ios/iphoneos                 
+        path: build/ios/iphoneos
+
+    - run: flutter build apk --target-platform android-arm,android-arm64
+    - name: Upload APK
+      uses: actions/upload-artifact@master
+      with:
+        name: apk-build
+        path: build/app/outputs/apk/release
