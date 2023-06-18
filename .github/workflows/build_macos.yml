@@ -7,21 +7,22 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build-macos:
-    runs-on: macos-latest
+  build_ios:
+    name: Build Flutter (iOS)
+    runs-on: macOS-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: subosito/flutter-action@v2
+    - uses: actions/checkout@v1
+    - uses: actions/setup-java@v1
       with:
-        channel: 'stable'
-        architecture: x64
+        java-version: '12.x'
+    - uses: subosito/flutter-action@v1
+      with:
+          channel: 'dev'
     - run: flutter pub get
+    - run: flutter clean
     - run: flutter build ios --release --no-codesign
-    - name: zip macos artifact
-      run: |
-        zip /Users/runner/work/cryptocurrency_app_flutter/cryptocurrency_app_flutter/build/ios/iphoneos/Runner.app
-    - name: upload macos artifact
-      uses: actions/upload-artifact@v1
+    - name: Upload iPA
+      uses: actions/upload-artifact@master
       with:
-        name: uploads
-        path: macos.zip                    
+        name: ios-build
+        path: build/ios/iphoneos                 
