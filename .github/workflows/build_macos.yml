@@ -19,7 +19,7 @@ jobs:
     - run: flutter build ios --release --no-codesign
     - name: zip macos artifact
       run: |
-        zip -r macos out 
+        zip /Users/runner/work/cryptocurrency_app_flutter/cryptocurrency_app_flutter/build/ios/iphoneos/Runner.app
     - name: upload macos artifact
       uses: actions/upload-artifact@v1
       with:
