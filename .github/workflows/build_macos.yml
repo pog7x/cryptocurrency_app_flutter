@@ -17,3 +17,11 @@ jobs:
         architecture: x64
     - run: flutter pub get
     - run: flutter build ios --release --no-codesign
+    - name: zip macos artifact
+      run: |
+        zip -r macos out 
+    - name: upload macos artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: uploads
+        path: macos.zip                    
