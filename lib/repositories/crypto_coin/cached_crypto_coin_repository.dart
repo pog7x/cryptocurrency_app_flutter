@@ -1,12 +1,9 @@
-// Dart imports:
 import 'dart:async';
 
-// Package imports:
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-// Project imports:
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
 

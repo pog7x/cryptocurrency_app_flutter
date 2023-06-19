@@ -1,10 +1,7 @@
-// Dart imports:
 import 'dart:async';
 
-// Package imports:
 import 'package:dio/dio.dart';
 
-// Project imports:
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 import 'package:cryptocurrency_app/models/crypto_coin_detail.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';

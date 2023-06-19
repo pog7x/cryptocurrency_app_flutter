@@ -1,4 +1,3 @@
-// Project imports:
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 
 abstract class AbstractCryptoCoinRepository {

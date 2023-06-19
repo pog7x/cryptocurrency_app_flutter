@@ -1,9 +1,7 @@
-// Package imports:
 import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-// Project imports:
 import 'package:cryptocurrency_app/models/constants.dart';
 
 part 'crypto_coin_detail.g.dart';
