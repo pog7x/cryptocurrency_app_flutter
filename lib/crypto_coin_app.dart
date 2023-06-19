@@ -1,11 +1,8 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
 import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-// Project imports:
 import 'package:cryptocurrency_app/router/router.dart';
 import 'package:cryptocurrency_app/ui/themes/themes.dart';
 

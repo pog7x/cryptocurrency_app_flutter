@@ -1,13 +1,10 @@
-// Dart imports:
 import 'dart:async';
 
-// Package imports:
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-// Project imports:
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin/abstract_crypto_coin_repository.dart';
 

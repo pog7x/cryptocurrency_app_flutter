@@ -1,4 +1,3 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
 
 const lightColor = Color.fromARGB(255, 245, 240, 235);

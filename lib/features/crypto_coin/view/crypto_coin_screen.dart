@@ -1,15 +1,11 @@
-// Dart imports:
 import 'dart:async';
 
-// Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
-// Project imports:
 import 'package:cryptocurrency_app/features/crypto_coin/bloc/crypto_coin_bloc.dart';
 import 'package:cryptocurrency_app/features/crypto_coin/crypto_coin.dart';
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
