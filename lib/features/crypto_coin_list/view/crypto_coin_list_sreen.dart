@@ -7,8 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-import 'package:cryptocurrency_app/features/crypto_coin_list/bloc/crypto_coin_list_bloc.dart';
-import 'package:cryptocurrency_app/features/crypto_coin_list/widgets/crypto_coin_list_tile.dart';
+import 'package:cryptocurrency_app/features/crypto_coin_list/crypto_coin_list.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
 import 'package:cryptocurrency_app/router/router.dart';
