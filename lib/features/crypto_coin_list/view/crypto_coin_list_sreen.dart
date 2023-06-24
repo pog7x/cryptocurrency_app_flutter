@@ -10,6 +10,8 @@ import 'package:talker_flutter/talker_flutter.dart';
 import 'package:cryptocurrency_app/features/crypto_coin_list/bloc/crypto_coin_list_bloc.dart';
 import 'package:cryptocurrency_app/features/crypto_coin_list/widgets/crypto_coin_list_tile.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
+import 'package:cryptocurrency_app/repositories/user_settings.dart';
+import 'package:cryptocurrency_app/router/router.dart';
 
 @RoutePage()
 class CryptoCoinListScreen extends StatefulWidget {
@@ -22,6 +24,7 @@ class CryptoCoinListScreen extends StatefulWidget {
 class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
   final _cryptoCoinListBloc = CryptoCoinListBloc(
     GetIt.I<AbstractCryptoCoinRepository>(),
+    GetIt.I<AbstractUserSettingsRepository>(),
   );
 
   @override
@@ -38,6 +41,14 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
         centerTitle: true,
         title: const Text('Cryptocurrency App'),
         actions: [
+          IconButton(
+            onPressed: () {
+              AutoRouter.of(context).push(const UserSettingsRoute());
+            },
+            icon: const Icon(
+              Icons.settings,
+            ),
+          ),
           IconButton(
             onPressed: () {
               Navigator.of(context).push(

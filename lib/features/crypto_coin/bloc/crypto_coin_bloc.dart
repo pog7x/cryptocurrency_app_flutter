@@ -7,20 +7,25 @@ import 'package:talker_flutter/talker_flutter.dart';
 
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
+import 'package:cryptocurrency_app/repositories/user_settings.dart';
 
 part 'crypto_coin_event.dart';
 part 'crypto_coin_state.dart';
 
 class CryptoCoinBloc extends Bloc<CryptoCoinEvent, CryptoCoinState> {
-  CryptoCoinBloc(this.cryptoCoinsRepo) : super(CryptoCoinInitial()) {
+  CryptoCoinBloc(
+    this.cryptoCoinsRepo,
+    this.userSettingsRepo,
+  ) : super(CryptoCoinInitial()) {
     on<LoadCryptoCoin>(
       (event, emit) async {
         try {
           if (state is! CryptoCoinLoaded) {
             emit(CryptoCoinLoading());
           }
+          final userSettings = await userSettingsRepo.getUserSettings();
           final coinDetail = await cryptoCoinsRepo.cryptoCoinDetail(
-            'USD',
+            userSettings.favCurrency,
             event.cryptoCoin.name,
           );
           emit(CryptoCoinLoaded(cryptoCoin: coinDetail));
@@ -41,4 +46,5 @@ class CryptoCoinBloc extends Bloc<CryptoCoinEvent, CryptoCoinState> {
   }
 
   final AbstractCryptoCoinRepository cryptoCoinsRepo;
+  final AbstractUserSettingsRepository userSettingsRepo;
 }
