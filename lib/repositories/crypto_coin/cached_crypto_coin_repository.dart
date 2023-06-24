@@ -22,13 +22,12 @@ class CachedCryptoCoinRepository implements AbstractCryptoCoinRepository {
 
     try {
       cryptoCoinList = await repo.getCryptoCoinList(currency);
+      cryptoCoinList.sort(((a, b) => a.name.compareTo(b.name)));
       await cryptoCoinsBox.putAll({for (var e in cryptoCoinList) e.name: e});
     } catch (err, stack) {
       GetIt.I<Talker>().handle(err, stack);
       cryptoCoinList = cryptoCoinsBox.values.toList();
     }
-
-    cryptoCoinList.sort(((a, b) => a.name.compareTo(b.name)));
 
     return cryptoCoinList;
   }

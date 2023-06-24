@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    UserSettingsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const UserSettingsScreen(),
+      );
+    },
     CryptoCoinRoute.name: (routeData) {
       final args = routeData.argsAs<CryptoCoinRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -32,6 +38,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [UserSettingsScreen]
+class UserSettingsRoute extends PageRouteInfo<void> {
+  const UserSettingsRoute({List<PageRouteInfo>? children})
+      : super(
+          UserSettingsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserSettingsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

@@ -10,6 +10,7 @@ import 'package:cryptocurrency_app/features/crypto_coin/bloc/crypto_coin_bloc.da
 import 'package:cryptocurrency_app/features/crypto_coin/crypto_coin.dart';
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
+import 'package:cryptocurrency_app/repositories/user_settings.dart';
 
 @RoutePage()
 class CryptoCoinScreen extends StatefulWidget {
@@ -24,6 +25,7 @@ class CryptoCoinScreen extends StatefulWidget {
 class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
   final _cryptoCoinBloc = CryptoCoinBloc(
     GetIt.I<AbstractCryptoCoinRepository>(),
+    GetIt.I<AbstractUserSettingsRepository>(),
   );
 
   @override
