@@ -10,6 +10,7 @@ class UserSettings extends Equatable {
   const UserSettings({
     this.favCurrency = 'EUR',
     this.appThemeMode = 'System',
+    this.likedCryptocoins = const <String>[],
   });
 
   @HiveField(0)
@@ -18,6 +19,13 @@ class UserSettings extends Equatable {
   @HiveField(1)
   final String appThemeMode;
 
+  @HiveField(2)
+  final List<String> likedCryptocoins;
+
   @override
-  List<Object?> get props => [favCurrency, appThemeMode];
+  List<Object?> get props => [
+        favCurrency,
+        appThemeMode,
+        likedCryptocoins,
+      ];
 }
