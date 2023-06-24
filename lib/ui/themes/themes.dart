@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 const lightColor = Color.fromARGB(255, 245, 240, 235);
 const darkColor = Color.fromARGB(255, 31, 31, 31);
+const secondaryColor = Colors.yellow;
 
 final lightTheme = ThemeData(
-  primarySwatch: Colors.yellow,
+  primarySwatch: secondaryColor,
   scaffoldBackgroundColor: darkColor,
   dividerTheme: const DividerThemeData(
     color: lightColor,
@@ -13,7 +14,7 @@ final lightTheme = ThemeData(
     thickness: .3,
   ),
   listTileTheme: const ListTileThemeData(
-    iconColor: lightColor,
+    iconColor: secondaryColor,
   ),
   appBarTheme: const AppBarTheme(
     iconTheme: IconThemeData(

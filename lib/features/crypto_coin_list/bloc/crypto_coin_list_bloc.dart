@@ -6,7 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
-import 'package:cryptocurrency_app/repositories/crypto_coin/abstract_crypto_coin_repository.dart';
+import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
 
 part 'crypto_coin_list_event.dart';

@@ -4,7 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
-import 'package:cryptocurrency_app/features/user_settings/bloc/user_settings_bloc.dart';
+import 'package:cryptocurrency_app/features/user_settings/user_settings.dart';
 import 'package:cryptocurrency_app/models/user_settings.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
 
@@ -75,10 +75,7 @@ class _UserSettingsScreenState extends State<UserSettingsScreen> {
                           _userSettingsBloc.add(LoadUserSettings());
                         },
                         trailing: (userSettings.favCurrency == currName)
-                            ? const Icon(
-                                Icons.check,
-                                color: Colors.orange,
-                              )
+                            ? const Icon(Icons.check)
                             : const Icon(null),
                       );
                     },
@@ -113,10 +110,7 @@ class _UserSettingsScreenState extends State<UserSettingsScreen> {
                           _userSettingsBloc.add(LoadUserSettings());
                         },
                         trailing: (userSettings.appThemeMode == themeMode)
-                            ? const Icon(
-                                Icons.check,
-                                color: Colors.orange,
-                              )
+                            ? const Icon(Icons.check)
                             : const Icon(null),
                       );
                     },
