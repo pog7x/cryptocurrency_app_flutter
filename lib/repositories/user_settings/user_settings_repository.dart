@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:talker_flutter/talker_flutter.dart';
@@ -17,14 +15,14 @@ class UserSettingsRepository implements AbstractUserSettingsRepository {
   final Box<UserSettings> userSettingsBox;
 
   @override
-  Future<UserSettings> getUserSettings() async {
+  UserSettings getUserSettings() {
     var us = const UserSettings();
 
     try {
       if (userSettingsBox.containsKey(userSettingsBoxKey)) {
         us = userSettingsBox.get(userSettingsBoxKey)!;
       } else {
-        await userSettingsBox.put(userSettingsBoxKey, us);
+        userSettingsBox.put(userSettingsBoxKey, us);
       }
     } catch (err, stack) {
       GetIt.I<Talker>().handle(err, stack);
@@ -34,9 +32,9 @@ class UserSettingsRepository implements AbstractUserSettingsRepository {
   }
 
   @override
-  Future<UserSettings> putUserSettings(UserSettings newUserSettings) async {
+  UserSettings putUserSettings(UserSettings newUserSettings) {
     try {
-      await userSettingsBox.put(userSettingsBoxKey, newUserSettings);
+      userSettingsBox.put(userSettingsBoxKey, newUserSettings);
     } catch (err, stack) {
       GetIt.I<Talker>().handle(err, stack);
     }

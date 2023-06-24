@@ -12,12 +12,12 @@ part 'user_settings_state.dart';
 class UserSettingsBloc extends Bloc<UserSettingsEvent, UserSettingsState> {
   UserSettingsBloc(this.userSettingsRepo) : super(UserSettingsInitial()) {
     on<LoadUserSettings>(
-      (event, emit) async {
+      (event, emit) {
         try {
           if (state is! UserSettingsLoaded) {
             emit(UserSettingsLoading());
           }
-          final us = await userSettingsRepo.getUserSettings();
+          final us = userSettingsRepo.getUserSettings();
           emit(UserSettingsLoaded(userSettings: us));
         } catch (err, stack) {
           emit(UserSettingsLoadingError(error: err));

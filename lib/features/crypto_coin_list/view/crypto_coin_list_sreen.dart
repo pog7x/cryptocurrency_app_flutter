@@ -41,14 +41,13 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
         title: const Text('Cryptocurrency App'),
         actions: [
           IconButton(
+            icon: const Icon(Icons.settings),
             onPressed: () {
               AutoRouter.of(context).push(const UserSettingsRoute());
             },
-            icon: const Icon(
-              Icons.settings,
-            ),
           ),
           IconButton(
+            icon: const Icon(Icons.document_scanner_outlined),
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -58,9 +57,6 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
                 ),
               );
             },
-            icon: const Icon(
-              Icons.document_scanner_outlined,
-            ),
           ),
         ],
       ),

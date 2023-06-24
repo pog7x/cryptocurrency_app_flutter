@@ -23,7 +23,7 @@ class CryptoCoinBloc extends Bloc<CryptoCoinEvent, CryptoCoinState> {
           if (state is! CryptoCoinLoaded) {
             emit(CryptoCoinLoading());
           }
-          final userSettings = await userSettingsRepo.getUserSettings();
+          final userSettings = userSettingsRepo.getUserSettings();
           final coinDetail = await cryptoCoinsRepo.cryptoCoinDetail(
             userSettings.favCurrency,
             event.cryptoCoin.name,

@@ -24,7 +24,7 @@ class CryptoCoinListBloc
           if (state is! CryptoCoinListLoaded) {
             emit(CryptoCoinListLoading());
           }
-          final userSettings = await userSettingsRepo.getUserSettings();
+          final userSettings = userSettingsRepo.getUserSettings();
           final cryptoCoinList = await cryptoCoinsRepo.getCryptoCoinList(
             userSettings.favCurrency,
           );
