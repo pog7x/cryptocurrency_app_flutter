@@ -7,7 +7,7 @@ import 'package:cryptocurrency_app/models/crypto_coin_detail.dart';
 part 'crypto_coin.g.dart';
 
 @HiveType(typeId: cryptoCoinHiveTypeID)
-class CryptoCoin extends Equatable {
+class CryptoCoin {
   const CryptoCoin({
     required this.name,
     required this.detail,
@@ -18,7 +18,4 @@ class CryptoCoin extends Equatable {
 
   @HiveField(1)
   final CryptoCoinDetail detail;
-
-  @override
-  List<Object?> get props => [name, detail];
 }

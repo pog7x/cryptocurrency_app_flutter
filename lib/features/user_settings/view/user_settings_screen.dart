@@ -70,6 +70,7 @@ class _UserSettingsScreenState extends State<UserSettingsScreen> {
                             UserSettings(
                               favCurrency: currName,
                               appThemeMode: userSettings.appThemeMode,
+                              likedCryptocoins: userSettings.likedCryptocoins,
                             ),
                           );
                           _userSettingsBloc.add(LoadUserSettings());
@@ -103,8 +104,9 @@ class _UserSettingsScreenState extends State<UserSettingsScreen> {
                         onTap: () {
                           repo.putUserSettings(
                             UserSettings(
-                              favCurrency: userSettings.favCurrency,
                               appThemeMode: themeMode,
+                              favCurrency: userSettings.favCurrency,
+                              likedCryptocoins: userSettings.likedCryptocoins,
                             ),
                           );
                           _userSettingsBloc.add(LoadUserSettings());
