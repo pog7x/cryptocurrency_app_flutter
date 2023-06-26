@@ -1,10 +1,10 @@
-import 'package:cryptocurrency_app/models/user_settings.dart';
-import 'package:cryptocurrency_app/repositories/user_settings.dart';
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
 
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
+import 'package:cryptocurrency_app/models/user_settings.dart';
+import 'package:cryptocurrency_app/repositories/user_settings.dart';
 import 'package:cryptocurrency_app/router/router.dart';
 
 class CryptoCoinListTile extends StatefulWidget {
@@ -24,12 +24,19 @@ class CryptoCoinListTile extends StatefulWidget {
 }
 
 class _CryptoCoinListTileState extends State<CryptoCoinListTile> {
+  late UserSettings _userSettings;
+
+  @override
+  void initState() {
+    _userSettings = widget.userSettings;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isLikedCrypto =
-        widget.userSettings.likedCryptocoins.contains(widget.cryptoCoin.name);
-
+        _userSettings.likedCryptocoins.contains(widget.cryptoCoin.name);
     return ListTile(
       onTap: () {
         AutoRouter.of(context).push(
@@ -43,18 +50,13 @@ class _CryptoCoinListTileState extends State<CryptoCoinListTile> {
             ? const Icon(Icons.favorite)
             : const Icon(Icons.favorite_border),
         onPressed: () {
+          _userSettings = widget.userSettingsRepo.getUserSettings();
           if (isLikedCrypto) {
-            widget.userSettings.likedCryptocoins.remove(widget.cryptoCoin.name);
+            _userSettings.likedCryptocoins.remove(widget.cryptoCoin.name);
           } else {
-            widget.userSettings.likedCryptocoins.add(widget.cryptoCoin.name);
+            _userSettings.likedCryptocoins.add(widget.cryptoCoin.name);
           }
-          widget.userSettingsRepo.putUserSettings(
-            UserSettings(
-              favCurrency: widget.userSettings.favCurrency,
-              appThemeMode: widget.userSettings.appThemeMode,
-              likedCryptocoins: widget.userSettings.likedCryptocoins,
-            ),
-          );
+          widget.userSettingsRepo.putUserSettings(_userSettings);
           setState(() {});
         },
       ),

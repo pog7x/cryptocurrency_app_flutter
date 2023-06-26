@@ -11,6 +11,7 @@ import 'package:cryptocurrency_app/features/crypto_coin_list/crypto_coin_list.da
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
 import 'package:cryptocurrency_app/router/router.dart';
+import 'package:cryptocurrency_app/ui/widgets/error_page.dart';
 
 @RoutePage()
 class CryptoCoinListScreen extends StatefulWidget {
@@ -34,7 +35,6 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -88,28 +88,10 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
                 },
               );
             } else if (state is CryptoCoinListLoadingError) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Something went wrong',
-                      style: theme.textTheme.bodyMedium,
-                    ),
-                    Text(
-                      'Please try again later',
-                      style: theme.textTheme.bodySmall,
-                    ),
-                    const SizedBox(height: 30),
-                    TextButton(
-                      onPressed: () {
-                        _cryptoCoinListBloc.add(LoadCryptoCoinList());
-                      },
-                      child: const Text('Try again'),
-                    )
-                  ],
-                ),
+              return ErrorPage(
+                onPressed: () {
+                  _cryptoCoinListBloc.add(LoadCryptoCoinList());
+                },
               );
             }
             return const Center(

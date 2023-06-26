@@ -30,7 +30,7 @@ void main() async {
 
   final cryptoCoinsBox = await Hive.openBox<CryptoCoin>(cryptoCoinsBoxName);
   final userSettingsBox = await Hive.openBox<UserSettings>(userSettingsBoxName);
-  // userSettingsBox.clear();
+
   Dio dio = Dio();
   dio.interceptors.add(
     TalkerDioLogger(

@@ -10,6 +10,8 @@ import 'package:cryptocurrency_app/features/crypto_coin/crypto_coin.dart';
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
+import 'package:cryptocurrency_app/ui/widgets/base_card.dart';
+import 'package:cryptocurrency_app/ui/widgets/error_page.dart';
 
 @RoutePage()
 class CryptoCoinScreen extends StatefulWidget {
@@ -99,32 +101,14 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
                     ),
                   );
                 } else if (state is CryptoCoinLoadingError) {
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Something went wrong',
-                          style: theme.textTheme.bodyMedium,
+                  return ErrorPage(
+                    onPressed: () {
+                      _cryptoCoinBloc.add(
+                        LoadCryptoCoin(
+                          cryptoCoin: widget.cryptoCoin,
                         ),
-                        Text(
-                          'Please try again later',
-                          style: theme.textTheme.bodySmall,
-                        ),
-                        const SizedBox(height: 30),
-                        TextButton(
-                          onPressed: () {
-                            _cryptoCoinBloc.add(
-                              LoadCryptoCoin(
-                                cryptoCoin: widget.cryptoCoin,
-                              ),
-                            );
-                          },
-                          child: const Text('Try again'),
-                        )
-                      ],
-                    ),
+                      );
+                    },
                   );
                 }
                 return const Center(
