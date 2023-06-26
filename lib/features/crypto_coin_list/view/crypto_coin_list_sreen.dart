@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:cryptocurrency_app/models/user_settings.dart';
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
@@ -74,55 +73,17 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
         child: BlocBuilder<CryptoCoinListBloc, CryptoCoinListState>(
           bloc: _cryptoCoinListBloc,
           builder: (context, state) {
+            final userSettingsRepo = GetIt.I<AbstractUserSettingsRepository>();
+            final userSettings = userSettingsRepo.getUserSettings();
             if (state is CryptoCoinListLoaded) {
               return ListView.separated(
                 itemCount: state.cryptoCoinList.length,
                 separatorBuilder: (context, i) => const Divider(),
                 itemBuilder: (context, i) {
-                  final cryptoCoinRepo =
-                      GetIt.I<AbstractUserSettingsRepository>();
-                  final cryptoCoin = state.cryptoCoinList[i];
-                  final userSettings = cryptoCoinRepo.getUserSettings();
-                  final isLikedCrypto =
-                      userSettings.likedCryptocoins.contains(cryptoCoin.name);
-                  return ListTile(
-                    onTap: () {
-                      AutoRouter.of(context)
-                          .push(CryptoCoinRoute(cryptoCoin: cryptoCoin));
-                    },
-                    hoverColor: Colors.black.withOpacity(.1),
-                    leading: Image.network(cryptoCoin.detail.imageUrl),
-                    trailing: IconButton(
-                      icon: (isLikedCrypto)
-                          ? const Icon(Icons.favorite)
-                          : const Icon(Icons.favorite_border),
-                      onPressed: () {
-                        final userSettings = cryptoCoinRepo.getUserSettings();
-                        final isLikedCrypto = userSettings.likedCryptocoins
-                            .contains(cryptoCoin.name);
-                        if (isLikedCrypto) {
-                          userSettings.likedCryptocoins.remove(cryptoCoin.name);
-                        } else {
-                          userSettings.likedCryptocoins.add(cryptoCoin.name);
-                        }
-                        cryptoCoinRepo.putUserSettings(
-                          UserSettings(
-                            favCurrency: userSettings.favCurrency,
-                            appThemeMode: userSettings.appThemeMode,
-                            likedCryptocoins: userSettings.likedCryptocoins,
-                          ),
-                        );
-                        _cryptoCoinListBloc.add(LoadCryptoCoinList());
-                      },
-                    ),
-                    title: Text(
-                      cryptoCoin.name,
-                      style: theme.textTheme.bodyMedium,
-                    ),
-                    subtitle: Text(
-                      cryptoCoin.detail.price,
-                      style: theme.textTheme.bodySmall,
-                    ),
+                  return CryptoCoinListTile(
+                    cryptoCoin: state.cryptoCoinList[i],
+                    userSettingsRepo: userSettingsRepo,
+                    userSettings: userSettings,
                   );
                 },
               );
