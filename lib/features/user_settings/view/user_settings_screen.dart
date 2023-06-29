@@ -38,6 +38,7 @@ class _UserSettingsScreenState extends State<UserSettingsScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Settings'),
+        leading: const AutoLeadingButton(),
       ),
       body: BlocBuilder<UserSettingsBloc, UserSettingsState>(
         bloc: _userSettingsBloc,

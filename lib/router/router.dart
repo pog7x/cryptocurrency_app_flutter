@@ -1,3 +1,4 @@
+import 'package:cryptocurrency_app/crypto_coin_app.dart';
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
@@ -13,8 +14,20 @@ part 'router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: CryptoCoinListRoute.page, path: '/'),
+        AutoRoute(
+          page: HomeRoute.page,
+          path: '/',
+          children: [
+            AutoRoute(
+              path: 'list',
+              page: CryptoCoinListRoute.page,
+            ),
+            AutoRoute(
+              path: 'settings',
+              page: UserSettingsRoute.page,
+            ),
+          ],
+        ),
         AutoRoute(page: CryptoCoinRoute.page),
-        AutoRoute(page: UserSettingsRoute.page),
       ];
 }
