@@ -10,7 +10,6 @@ import 'package:talker_flutter/talker_flutter.dart';
 import 'package:cryptocurrency_app/features/crypto_coin_list/crypto_coin_list.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
-import 'package:cryptocurrency_app/router/router.dart';
 import 'package:cryptocurrency_app/ui/widgets/error_page.dart';
 
 @RoutePage()
@@ -40,12 +39,6 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
         centerTitle: true,
         title: const Text('Cryptocurrency App'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              AutoRouter.of(context).push(const UserSettingsRoute());
-            },
-          ),
           IconButton(
             icon: const Icon(Icons.document_scanner_outlined),
             onPressed: () {

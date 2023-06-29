@@ -21,6 +21,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomePage(),
       );
     },
+    CryptoCoinListTab.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CryptoCoinListTabPage(),
+      );
+    },
+    UserSettingsTab.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const UserSettingsTabPage(),
+      );
+    },
     UserSettingsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -56,6 +68,34 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CryptoCoinListTabPage]
+class CryptoCoinListTab extends PageRouteInfo<void> {
+  const CryptoCoinListTab({List<PageRouteInfo>? children})
+      : super(
+          CryptoCoinListTab.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CryptoCoinListTab';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [UserSettingsTabPage]
+class UserSettingsTab extends PageRouteInfo<void> {
+  const UserSettingsTab({List<PageRouteInfo>? children})
+      : super(
+          UserSettingsTab.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserSettingsTab';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

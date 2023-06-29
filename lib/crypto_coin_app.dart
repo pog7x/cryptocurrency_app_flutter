@@ -1,9 +1,7 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:get_it/get_it.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 import 'package:cryptocurrency_app/router/router.dart';
@@ -54,33 +52,21 @@ class _HomePageState extends State<HomePage> {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
           body: child,
-          bottomNavigationBar: SalomonBottomBar(
-            margin: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 10,
-            ),
+          bottomNavigationBar: BottomNavigationBar(
             currentIndex: tabsRouter.activeIndex,
             onTap: (index) {
               tabsRouter.setActiveIndex(index);
             },
-            items: [
-              SalomonBottomBarItem(
-                unselectedColor: Colors.grey,
-                selectedColor: Colors.yellow,
-                icon: const Icon(
-                  Icons.home,
-                  size: 20,
-                ),
-                title: const Text('Home'),
+            items: const [
+              BottomNavigationBarItem(
+                label: 'Home',
+                icon: Icon(Icons.home_outlined),
+                activeIcon: Icon(Icons.home),
               ),
-              SalomonBottomBarItem(
-                unselectedColor: Colors.grey,
-                selectedColor: Colors.yellow,
-                icon: const Icon(
-                  Icons.settings,
-                  size: 20,
-                ),
-                title: const Text('Settings'),
+              BottomNavigationBarItem(
+                label: 'Settings',
+                icon: Icon(Icons.settings_outlined),
+                activeIcon: Icon(Icons.settings),
               )
             ],
           ),
