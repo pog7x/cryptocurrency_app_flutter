@@ -46,6 +46,7 @@ class _HomePageState extends State<HomePage> {
       animatePageTransition: false,
       routes: const [
         CryptoCoinListRoute(),
+        CryptoCoinSearchRoute(),
         UserSettingsRoute(),
       ],
       builder: (context, child, controller) {
@@ -62,6 +63,11 @@ class _HomePageState extends State<HomePage> {
                 label: 'Home',
                 icon: Icon(Icons.home_outlined),
                 activeIcon: Icon(Icons.home),
+              ),
+              BottomNavigationBarItem(
+                label: 'Search',
+                icon: Icon(Icons.search),
+                activeIcon: Icon(Icons.search),
               ),
               BottomNavigationBarItem(
                 label: 'Settings',

@@ -7,17 +7,6 @@ import 'package:cryptocurrency_app/models/crypto_coin_detail.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
 
 const clientBaseURL = 'https://min-api.cryptocompare.com';
-const criptoCurrencyCodes = <String>[
-  'BTC',
-  'ETH',
-  'BNB',
-  'QTL',
-  'SXC',
-  '42',
-  'SOL',
-  'AID',
-  'DOV',
-];
 
 class CryptoCoinRepository implements AbstractCryptoCoinRepository {
   CryptoCoinRepository({
@@ -33,11 +22,14 @@ class CryptoCoinRepository implements AbstractCryptoCoinRepository {
   final Dio dio;
 
   @override
-  Future<List<CryptoCoin>> getCryptoCoinList(String currency) async {
+  Future<List<CryptoCoin>> getCryptoCoinList(
+    String currency,
+    List<String> cryptoCurrList,
+  ) async {
     Response response = await dio.get(
       '/data/pricemultifull',
       queryParameters: {
-        'fsyms': criptoCurrencyCodes.join(','),
+        'fsyms': cryptoCurrList.join(','),
         'tsyms': currency,
       },
     );

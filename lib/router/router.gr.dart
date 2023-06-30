@@ -33,6 +33,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const UserSettingsTabPage(),
       );
     },
+    CryptoCoinSearchTab.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CryptoCoinSearchTabPage(),
+      );
+    },
     UserSettingsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -53,6 +59,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const CryptoCoinListScreen(),
+      );
+    },
+    CryptoCoinSearchRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CryptoCoinSearchScreen(),
       );
     },
   };
@@ -96,6 +108,20 @@ class UserSettingsTab extends PageRouteInfo<void> {
         );
 
   static const String name = 'UserSettingsTab';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CryptoCoinSearchTabPage]
+class CryptoCoinSearchTab extends PageRouteInfo<void> {
+  const CryptoCoinSearchTab({List<PageRouteInfo>? children})
+      : super(
+          CryptoCoinSearchTab.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CryptoCoinSearchTab';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -162,6 +188,20 @@ class CryptoCoinListRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CryptoCoinListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CryptoCoinSearchScreen]
+class CryptoCoinSearchRoute extends PageRouteInfo<void> {
+  const CryptoCoinSearchRoute({List<PageRouteInfo>? children})
+      : super(
+          CryptoCoinSearchRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CryptoCoinSearchRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

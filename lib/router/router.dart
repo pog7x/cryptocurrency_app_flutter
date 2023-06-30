@@ -5,6 +5,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cryptocurrency_app/crypto_coin_app.dart';
 import 'package:cryptocurrency_app/features/crypto_coin/crypto_coin.dart';
 import 'package:cryptocurrency_app/features/crypto_coin_list/crypto_coin_list.dart';
+import 'package:cryptocurrency_app/features/crypto_coin_search/crypto_coin_search.dart';
 import 'package:cryptocurrency_app/features/user_settings/user_settings.dart';
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 
@@ -42,6 +43,20 @@ class AppRouter extends _$AppRouter {
                 )
               ],
             ),
+            AutoRoute(
+              path: 'search',
+              page: CryptoCoinSearchTab.page,
+              children: [
+                AutoRoute(
+                  path: '',
+                  page: CryptoCoinSearchRoute.page,
+                ),
+                AutoRoute(
+                  path: '',
+                  page: CryptoCoinRoute.page,
+                ),
+              ],
+            ),
           ],
         ),
       ];
@@ -55,4 +70,9 @@ class CryptoCoinListTabPage extends AutoRouter {
 @RoutePage(name: 'UserSettingsTab')
 class UserSettingsTabPage extends AutoRouter {
   const UserSettingsTabPage({super.key});
+}
+
+@RoutePage(name: 'CryptoCoinSearchTab')
+class CryptoCoinSearchTabPage extends AutoRouter {
+  const CryptoCoinSearchTabPage({super.key});
 }

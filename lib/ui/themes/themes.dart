@@ -6,8 +6,11 @@ const primarySwatch = Colors.yellow;
 const activeColor = Colors.yellow;
 const inactiveColor = Colors.grey;
 const bottomNavBackground = Color.fromARGB(255, 21, 21, 21);
+const inputHintTextColor = Colors.white70;
+const inputBackGround = Color.fromARGB(255, 59, 58, 58);
 
 final lightTheme = ThemeData(
+  disabledColor: inactiveColor,
   primarySwatch: primarySwatch,
   scaffoldBackgroundColor: darkColor,
   unselectedWidgetColor: inactiveColor,
@@ -42,6 +45,7 @@ final lightTheme = ThemeData(
   ),
   listTileTheme: const ListTileThemeData(
     iconColor: activeColor,
+    tileColor: darkColor,
   ),
   appBarTheme: const AppBarTheme(
     iconTheme: IconThemeData(
@@ -54,6 +58,18 @@ final lightTheme = ThemeData(
       color: lightColor,
     ),
   ),
+  inputDecorationTheme: const InputDecorationTheme(
+    disabledBorder: OutlineInputBorder(),
+    border: OutlineInputBorder(),
+    filled: true,
+    fillColor: inputBackGround,
+    hintStyle: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w400,
+      color: inputHintTextColor,
+    ),
+  ),
+  hintColor: lightColor,
   textTheme: const TextTheme(
     bodySmall: TextStyle(
       fontSize: 14,
@@ -68,6 +84,11 @@ final lightTheme = ThemeData(
     bodyLarge: TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.w700,
+      color: lightColor,
+    ),
+    labelMedium: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w400,
       color: lightColor,
     ),
   ),

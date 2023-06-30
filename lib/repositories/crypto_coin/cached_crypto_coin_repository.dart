@@ -17,12 +17,14 @@ class CachedCryptoCoinRepository implements AbstractCryptoCoinRepository {
   final Box<CryptoCoin> cryptoCoinsBox;
 
   @override
-  Future<List<CryptoCoin>> getCryptoCoinList(String currency) async {
+  Future<List<CryptoCoin>> getCryptoCoinList(
+    String currency,
+    List<String> cryptoCurrList,
+  ) async {
     var cryptoCoinList = <CryptoCoin>[];
 
     try {
-      cryptoCoinList = await repo.getCryptoCoinList(currency);
-      cryptoCoinList.sort(((a, b) => a.name.compareTo(b.name)));
+      cryptoCoinList = await repo.getCryptoCoinList(currency, cryptoCurrList);
       await cryptoCoinsBox.putAll({for (var e in cryptoCoinList) e.name: e});
     } catch (err, stack) {
       GetIt.I<Talker>().handle(err, stack);
