@@ -20,7 +20,7 @@ class _CryptoCoinAppState extends State<CryptoCoinApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'My best crypto coin application',
+      title: 'Cryptocurrency application',
       theme: lightTheme,
       routerConfig: _appRouter.config(
         navigatorObservers: () => [
