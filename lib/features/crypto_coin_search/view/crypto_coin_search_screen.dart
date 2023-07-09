@@ -8,6 +8,7 @@ import 'package:cryptocurrency_app/features/constants.dart';
 import 'package:cryptocurrency_app/features/crypto_coin_list/crypto_coin_list.dart';
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
+import 'package:cryptocurrency_app/repositories/liked_crypto_coins.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
 import 'package:cryptocurrency_app/router/router.dart';
 
@@ -22,6 +23,7 @@ class CryptoCoinSearchScreen extends StatefulWidget {
 class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
   final userSettingsRepo = GetIt.I<AbstractUserSettingsRepository>();
   final cryptoCoinRepo = GetIt.I<AbstractCryptoCoinRepository>();
+  final likedCryptoCoinsRepo = GetIt.I<AbstractLikedCryptoCoinsRepository>();
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +68,6 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
                       'No items found',
                       style: theme.textTheme.bodyMedium,
                     ),
-                    // child: const CircularProgressIndicator(),
                   ),
                 ),
                 itemSeparatorBuilder: (context, i) => const Divider(
@@ -82,7 +83,7 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
                   ),
                 ),
                 suggestionsCallback: (String pattern) async {
-                  final searchRequest = _getCoinsNames(pattern);
+                  final searchRequest = _coinsSearchRequest(pattern);
                   if (searchRequest.isNotEmpty) {
                     return cryptoCoinRepo.getCryptoCoinList(
                       userSettingsRepo.getUserSettings().favCurrency,
@@ -94,8 +95,9 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
                 itemBuilder: (BuildContext context, CryptoCoin coin) {
                   return CryptoCoinListTile(
                     cryptoCoin: coin,
-                    userSettings: userSettingsRepo.getUserSettings(),
-                    userSettingsRepo: userSettingsRepo,
+                    likedCryptoCoinsRepo: likedCryptoCoinsRepo,
+                    likedCryptoCoins:
+                        likedCryptoCoinsRepo.getLikedCryptoCoins(),
                   );
                 },
                 onSuggestionSelected: (CryptoCoin coin) {
@@ -113,7 +115,7 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
     );
   }
 
-  List<String> _getCoinsNames(String pattern) {
+  List<String> _coinsSearchRequest(String pattern) {
     if (pattern.isNotEmpty) {
       return allCryptoCoins
           .where(

@@ -9,6 +9,7 @@ import 'package:talker_flutter/talker_flutter.dart';
 
 import 'package:cryptocurrency_app/features/crypto_coin_list/crypto_coin_list.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
+import 'package:cryptocurrency_app/repositories/liked_crypto_coins.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
 import 'package:cryptocurrency_app/ui/widgets/error_page.dart';
 
@@ -24,6 +25,7 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
   final _cryptoCoinListBloc = CryptoCoinListBloc(
     GetIt.I<AbstractCryptoCoinRepository>(),
     GetIt.I<AbstractUserSettingsRepository>(),
+    GetIt.I<AbstractLikedCryptoCoinsRepository>(),
   );
 
   @override
@@ -66,8 +68,8 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
         child: BlocBuilder<CryptoCoinListBloc, CryptoCoinListState>(
           bloc: _cryptoCoinListBloc,
           builder: (context, state) {
-            final userSettingsRepo = GetIt.I<AbstractUserSettingsRepository>();
-            final userSettings = userSettingsRepo.getUserSettings();
+            final likedCryptoCoinsRepo =
+                GetIt.I<AbstractLikedCryptoCoinsRepository>();
             if (state is CryptoCoinListLoaded) {
               return ListView.separated(
                 itemCount: state.cryptoCoinList.length,
@@ -75,8 +77,9 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
                 itemBuilder: (context, i) {
                   return CryptoCoinListTile(
                     cryptoCoin: state.cryptoCoinList[i],
-                    userSettingsRepo: userSettingsRepo,
-                    userSettings: userSettings,
+                    likedCryptoCoins:
+                        likedCryptoCoinsRepo.getLikedCryptoCoins(),
+                    likedCryptoCoinsRepo: likedCryptoCoinsRepo,
                   );
                 },
               );

@@ -15,10 +15,12 @@ import 'package:cryptocurrency_app/models/crypto_coin.dart';
 import 'package:cryptocurrency_app/models/crypto_coin_detail.dart';
 import 'package:cryptocurrency_app/models/user_settings.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
+import 'package:cryptocurrency_app/repositories/liked_crypto_coins.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
 
 const cryptoCoinsBoxName = 'crypto_coins_box';
 const userSettingsBoxName = 'user_settings_box';
+const likedCryptoCoinsBoxName = 'liked_crypto_coins_box';
 
 void main() async {
   GetIt.I.registerSingleton(TalkerFlutter.init());
@@ -30,6 +32,9 @@ void main() async {
 
   final cryptoCoinsBox = await Hive.openBox<CryptoCoin>(cryptoCoinsBoxName);
   final userSettingsBox = await Hive.openBox<UserSettings>(userSettingsBoxName);
+  final likedCryptoCoinsBox = await Hive.openBox<List<String>>(
+    likedCryptoCoinsBoxName,
+  );
 
   Dio dio = Dio();
   dio.interceptors.add(
@@ -60,6 +65,12 @@ void main() async {
   GetIt.I.registerLazySingleton<AbstractUserSettingsRepository>(
     () => UserSettingsRepository(
       userSettingsBox: userSettingsBox,
+    ),
+  );
+
+  GetIt.I.registerLazySingleton<AbstractLikedCryptoCoinsRepository>(
+    () => LikedCryptoCoinsRepository(
+      likedCryptoCoinsBox: likedCryptoCoinsBox,
     ),
   );
 

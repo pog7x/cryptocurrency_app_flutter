@@ -1,14 +1,14 @@
 import 'dart:async';
 
-import 'package:cryptocurrency_app/features/constants.dart';
-import 'package:cryptocurrency_app/models/user_settings.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
+import 'package:cryptocurrency_app/features/constants.dart';
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
+import 'package:cryptocurrency_app/repositories/liked_crypto_coins.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
 
 part 'crypto_coin_list_event.dart';
@@ -21,6 +21,7 @@ class CryptoCoinListBloc
   CryptoCoinListBloc(
     this.cryptoCoinsRepo,
     this.userSettingsRepo,
+    this.likedCryptoCoinsRepo,
   ) : super(CryptoCoinListInitial()) {
     on<LoadCryptoCoinList>(
       (event, emit) async {
@@ -28,8 +29,9 @@ class CryptoCoinListBloc
           if (state is! CryptoCoinListLoaded) {
             emit(CryptoCoinListLoading());
           }
+          final liked = likedCryptoCoinsRepo.getLikedCryptoCoins();
           final userSettings = userSettingsRepo.getUserSettings();
-          final cryptoRequest = _calculateCryptoListForRequest(userSettings);
+          final cryptoRequest = _calculateCryptoListForRequest(liked);
           final cryptoCoinList = await cryptoCoinsRepo.getCryptoCoinList(
             userSettings.favCurrency,
             cryptoRequest,
@@ -45,21 +47,21 @@ class CryptoCoinListBloc
     );
   }
 
+  final AbstractCryptoCoinRepository cryptoCoinsRepo;
+  final AbstractUserSettingsRepository userSettingsRepo;
+  final AbstractLikedCryptoCoinsRepository likedCryptoCoinsRepo;
+
   @override
   void onError(Object error, StackTrace stackTrace) {
     GetIt.I<Talker>().handle(error, stackTrace);
     super.onError(error, stackTrace);
   }
 
-  final AbstractCryptoCoinRepository cryptoCoinsRepo;
-  final AbstractUserSettingsRepository userSettingsRepo;
-
-  List<String> _calculateCryptoListForRequest(UserSettings userSettings) {
-    final toAdd =
-        minCryptoLenghtOnListScreen - userSettings.likedCryptocoins.length;
+  List<String> _calculateCryptoListForRequest(List<String> likedCryptocoins) {
+    final toAdd = minCryptoLenghtOnListScreen - likedCryptocoins.length;
 
     return toAdd <= 0
-        ? userSettings.likedCryptocoins
-        : userSettings.likedCryptocoins + allCryptoCoins.sublist(0, toAdd);
+        ? likedCryptocoins
+        : likedCryptocoins + allCryptoCoins.sublist(0, toAdd);
   }
 }

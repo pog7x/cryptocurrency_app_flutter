@@ -3,40 +3,39 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
-import 'package:cryptocurrency_app/models/user_settings.dart';
-import 'package:cryptocurrency_app/repositories/user_settings.dart';
+import 'package:cryptocurrency_app/repositories/liked_crypto_coins.dart';
 import 'package:cryptocurrency_app/router/router.dart';
 
 class CryptoCoinListTile extends StatefulWidget {
   const CryptoCoinListTile({
     super.key,
     required this.cryptoCoin,
-    required this.userSettings,
-    required this.userSettingsRepo,
+    required this.likedCryptoCoins,
+    required this.likedCryptoCoinsRepo,
   });
 
   final CryptoCoin cryptoCoin;
-  final UserSettings userSettings;
-  final AbstractUserSettingsRepository userSettingsRepo;
+  final List<String> likedCryptoCoins;
+  final AbstractLikedCryptoCoinsRepository likedCryptoCoinsRepo;
 
   @override
   State<CryptoCoinListTile> createState() => _CryptoCoinListTileState();
 }
 
 class _CryptoCoinListTileState extends State<CryptoCoinListTile> {
-  late UserSettings _userSettings;
+  late List<String> _likedCryptoCoins;
 
   @override
   void initState() {
-    _userSettings = widget.userSettings;
+    _likedCryptoCoins = widget.likedCryptoCoins;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isLikedCrypto =
-        _userSettings.likedCryptocoins.contains(widget.cryptoCoin.name);
+    final coinName = widget.cryptoCoin.name;
+    final isLikedCrypto = _likedCryptoCoins.contains(coinName);
     return ListTile(
       onTap: () {
         AutoRouter.of(context).push(
@@ -50,13 +49,12 @@ class _CryptoCoinListTileState extends State<CryptoCoinListTile> {
             ? const Icon(Icons.favorite)
             : const Icon(Icons.favorite_border),
         onPressed: () {
-          _userSettings = widget.userSettingsRepo.getUserSettings();
           if (isLikedCrypto) {
-            _userSettings.likedCryptocoins.remove(widget.cryptoCoin.name);
+            _likedCryptoCoins.remove(coinName);
           } else {
-            _userSettings.likedCryptocoins.add(widget.cryptoCoin.name);
+            _likedCryptoCoins.add(coinName);
           }
-          widget.userSettingsRepo.putUserSettings(_userSettings);
+          widget.likedCryptoCoinsRepo.putLikedCryptoCoins(_likedCryptoCoins);
           setState(() {});
         },
       ),
