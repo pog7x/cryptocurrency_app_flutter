@@ -19,20 +19,17 @@ class UserSettingsAdapter extends TypeAdapter<UserSettings> {
     return UserSettings(
       favCurrency: fields[0] as String,
       appThemeMode: fields[1] as String,
-      likedCryptocoins: (fields[2] as List).cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, UserSettings obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(2)
       ..writeByte(0)
       ..write(obj.favCurrency)
       ..writeByte(1)
-      ..write(obj.appThemeMode)
-      ..writeByte(2)
-      ..write(obj.likedCryptocoins);
+      ..write(obj.appThemeMode);
   }
 
   @override
