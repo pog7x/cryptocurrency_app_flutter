@@ -5,3 +5,9 @@ flutter training application
 ```bash
 flutter create --org <org> --project-name <project_name> .
 ```
+
+<img src="screenshots/photo_2023-07-17_14-58-35.jpg" width="200" height="415"/>
+<img src="screenshots/photo_2023-07-17_14-59-16.jpg" width="200" height="415"/>
+<img src="screenshots/photo_2023-07-17_14-59-48.jpg" width="200" height="415"/>
+<img src="screenshots/photo_2023-07-17_15-00-20.jpg" width="200" height="415"/>
+<img src="screenshots/photo_2023-07-17_15-00-52.jpg" width="200" height="415"/>
