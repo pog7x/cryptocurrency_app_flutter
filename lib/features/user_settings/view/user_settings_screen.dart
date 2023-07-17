@@ -1,3 +1,4 @@
+import 'package:cryptocurrency_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
@@ -46,7 +47,7 @@ class _UserSettingsScreenState extends State<UserSettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Settings'),
+        title: Text(S.of(context).settings),
         leading: const AutoLeadingButton(),
       ),
       body: BlocBuilder<UserSettingsBloc, UserSettingsState>(
@@ -62,7 +63,7 @@ class _UserSettingsScreenState extends State<UserSettingsScreen> {
                     height: 10,
                   ),
                   Text(
-                    'Select currency',
+                    S.of(context).selectCurrency,
                     style: theme.textTheme.bodyMedium,
                   ),
                   BaseCard(
@@ -97,7 +98,7 @@ class _UserSettingsScreenState extends State<UserSettingsScreen> {
                     height: 10,
                   ),
                   Text(
-                    'Select theme mode',
+                    S.of(context).selectThemeMode,
                     style: theme.textTheme.bodyMedium,
                   ),
                   BaseCard(

@@ -1,6 +1,8 @@
+import 'package:cryptocurrency_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:talker_flutter/talker_flutter.dart';
@@ -51,10 +53,19 @@ class _CryptoCoinAppState extends State<CryptoCoinApp> {
         }
 
         return MaterialApp.router(
-          title: 'Cryptocurrency application',
+          title: 'Cryptocurrencies',
+          onGenerateTitle: (context) => S.of(context).cryptocurrencies,
           theme: lightTheme,
           darkTheme: darkTheme,
           themeMode: themeMode,
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          locale: Locale('ru'),
+          supportedLocales: S.delegate.supportedLocales,
           routerConfig: _appRouter.config(
             navigatorObservers: () => [
               TalkerRouteObserver(GetIt.I<Talker>()),
@@ -93,21 +104,21 @@ class _HomePageState extends State<HomePage> {
             onTap: (index) {
               tabsRouter.setActiveIndex(index);
             },
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                label: 'Home',
-                icon: Icon(Icons.home_outlined),
-                activeIcon: Icon(Icons.home),
+                label: S.of(context).home,
+                icon: const Icon(Icons.home_outlined),
+                activeIcon: const Icon(Icons.home),
               ),
               BottomNavigationBarItem(
-                label: 'Search',
-                icon: Icon(Icons.search),
-                activeIcon: Icon(Icons.search),
+                label: S.of(context).search,
+                icon: const Icon(Icons.search),
+                activeIcon: const Icon(Icons.search),
               ),
               BottomNavigationBarItem(
-                label: 'Settings',
-                icon: Icon(Icons.settings_outlined),
-                activeIcon: Icon(Icons.settings),
+                label: S.of(context).settings,
+                icon: const Icon(Icons.settings_outlined),
+                activeIcon: const Icon(Icons.settings),
               )
             ],
           ),

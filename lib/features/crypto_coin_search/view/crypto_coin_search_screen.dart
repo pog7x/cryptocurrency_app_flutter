@@ -1,3 +1,4 @@
+import 'package:cryptocurrency_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
@@ -32,14 +33,14 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Search'),
+        title: Text(S.of(context).search),
         leading: const AutoLeadingButton(),
       ),
       body: Center(
         child: Column(
           children: [
             const SizedBox(height: 10),
-            const Text('Put your search request:'),
+            Text(S.of(context).putYourSearchRequest),
             Container(
               padding: const EdgeInsets.all(16),
               child: TypeAheadField(
@@ -78,8 +79,8 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
                   focusNode: focusNode,
                   onTapOutside: (PointerDownEvent event) => focusNode.unfocus(),
                   style: theme.textTheme.labelMedium,
-                  decoration: const InputDecoration(
-                    hintText: 'e.g., BTC',
+                  decoration: InputDecoration(
+                    hintText: S.of(context).egBtc,
                   ),
                 ),
                 suggestionsCallback: (String pattern) async {

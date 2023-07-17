@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cryptocurrency_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
@@ -38,7 +39,7 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Cryptocurrency App'),
+        title: Text(S.of(context).cryptocurrencies),
       ),
       body: RefreshIndicator(
         onRefresh: () async {

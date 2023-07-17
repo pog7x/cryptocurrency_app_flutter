@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cryptocurrency_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
@@ -86,12 +87,12 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
                           child: Column(
                             children: [
                               _DataRow(
-                                title: 'Hight 24 Hour',
+                                title: S.of(context).hight24Hour,
                                 value: coin.detail.high24Hour,
                               ),
                               const SizedBox(height: 6),
                               _DataRow(
-                                title: 'Low 24 Hour',
+                                title: S.of(context).low24Hour,
                                 value: coin.detail.low24Hour,
                               ),
                             ],
