@@ -1,5 +1,4 @@
 import 'package:cryptocurrency_app/generated/l10n.dart';
-import 'package:flutter/material.dart';
 
 const String currencyItemUSD = 'USD';
 const String currencyItemEUR = 'EUR';
@@ -9,10 +8,10 @@ const String appThemeModeDark = 'Dark';
 const String appThemeModeLight = 'Light';
 const String appThemeModeSystem = 'System';
 
-Map<ThemeMode, String> appThemeModeMap = {
-  ThemeMode.dark: S.current.dark,
-  ThemeMode.light: S.current.light,
-  ThemeMode.system: S.current.system,
+Map<String, String> appThemeModeMap = {
+  appThemeModeDark: S.current.dark,
+  appThemeModeLight: S.current.light,
+  appThemeModeSystem: S.current.system,
 };
 
 const allCryptoCoins = [

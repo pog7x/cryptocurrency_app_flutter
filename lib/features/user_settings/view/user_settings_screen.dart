@@ -110,7 +110,7 @@ class _UserSettingsScreenState extends State<UserSettingsScreen> {
                         final themeMode = appThemeModeItems[i];
                         return ListTile(
                           title: Text(
-                            themeMode,
+                            appThemeModeMap[themeMode]!,
                             style: theme.textTheme.bodyMedium,
                           ),
                           onTap: () {
