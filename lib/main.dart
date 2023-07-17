@@ -79,7 +79,7 @@ void main() async {
   };
 
   runZonedGuarded(
-    () => runApp(const CryptoCoinApp()),
+    () => runApp(CryptoCoinApp(userSettingsBox: userSettingsBox)),
     (error, stack) {
       GetIt.I<Talker>().handle(error);
     },

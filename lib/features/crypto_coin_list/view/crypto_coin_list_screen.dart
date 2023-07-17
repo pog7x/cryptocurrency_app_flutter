@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:talker_flutter/talker_flutter.dart';
 
 import 'package:cryptocurrency_app/features/crypto_coin_list/crypto_coin_list.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
@@ -40,20 +39,6 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Cryptocurrency App'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.document_scanner_outlined),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => TalkerScreen(
-                    talker: GetIt.I<Talker>(),
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
       ),
       body: RefreshIndicator(
         onRefresh: () async {

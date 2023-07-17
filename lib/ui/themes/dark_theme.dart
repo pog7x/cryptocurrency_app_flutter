@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
 
-const lightColor = Color.fromARGB(255, 245, 240, 235);
-const darkColor = Color.fromARGB(255, 31, 31, 31);
-const primarySwatch = Colors.yellow;
-const activeColor = Colors.yellow;
-const inactiveColor = Colors.grey;
-const bottomNavBackground = Color.fromARGB(255, 21, 21, 21);
-const inputHintTextColor = Colors.white70;
-const inputBackGround = Color.fromARGB(255, 59, 58, 58);
+const mainColorDark = Color.fromARGB(255, 31, 31, 31);
+const secColorDark = Color.fromARGB(255, 245, 240, 235);
+const primarySwatchDark = Colors.orange;
+const activeColorDark = Colors.orange;
+const inactiveColorDark = Colors.grey;
+const bottomNavBackgroundDark = Color.fromARGB(255, 21, 21, 21);
+const inputHintTextColorDark = Colors.white70;
+const inputBackgroundDark = Color.fromARGB(255, 59, 58, 58);
+const cardColorDark = Color.fromARGB(255, 21, 21, 21);
 
-final lightTheme = ThemeData(
-  disabledColor: inactiveColor,
-  primarySwatch: primarySwatch,
-  scaffoldBackgroundColor: darkColor,
-  unselectedWidgetColor: inactiveColor,
+final darkTheme = ThemeData(
+  cardColor: cardColorDark,
+  disabledColor: inactiveColorDark,
+  primarySwatch: primarySwatchDark,
+  scaffoldBackgroundColor: mainColorDark,
+  unselectedWidgetColor: inactiveColorDark,
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    backgroundColor: bottomNavBackground,
+    backgroundColor: bottomNavBackgroundDark,
     elevation: 0,
     unselectedIconTheme: IconThemeData(
-      color: inactiveColor,
+      color: inactiveColorDark,
     ),
     selectedIconTheme: IconThemeData(
-      color: activeColor,
+      color: activeColorDark,
     ),
-    selectedItemColor: activeColor,
-    unselectedItemColor: inactiveColor,
+    selectedItemColor: activeColorDark,
+    unselectedItemColor: inactiveColorDark,
     selectedLabelStyle: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w500,
@@ -35,61 +37,61 @@ final lightTheme = ThemeData(
     ),
   ),
   dividerTheme: const DividerThemeData(
-    color: lightColor,
+    color: secColorDark,
     indent: 10,
     endIndent: 10,
     thickness: .3,
   ),
   iconTheme: const IconThemeData(
-    color: activeColor,
+    color: activeColorDark,
   ),
   listTileTheme: const ListTileThemeData(
-    iconColor: activeColor,
-    tileColor: darkColor,
+    iconColor: activeColorDark,
+    tileColor: mainColorDark,
   ),
   appBarTheme: const AppBarTheme(
     iconTheme: IconThemeData(
-      color: lightColor,
+      color: secColorDark,
     ),
-    backgroundColor: darkColor,
+    backgroundColor: mainColorDark,
     titleTextStyle: TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w800,
-      color: lightColor,
+      color: secColorDark,
     ),
   ),
   inputDecorationTheme: const InputDecorationTheme(
     disabledBorder: OutlineInputBorder(),
     border: OutlineInputBorder(),
     filled: true,
-    fillColor: inputBackGround,
+    fillColor: inputBackgroundDark,
     hintStyle: TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w400,
-      color: inputHintTextColor,
+      color: inputHintTextColorDark,
     ),
   ),
-  hintColor: lightColor,
+  hintColor: secColorDark,
   textTheme: const TextTheme(
     bodySmall: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w500,
-      color: lightColor,
+      color: secColorDark,
     ),
     bodyMedium: TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w600,
-      color: lightColor,
+      color: secColorDark,
     ),
     bodyLarge: TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.w700,
-      color: lightColor,
+      color: secColorDark,
     ),
     labelMedium: TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w400,
-      color: lightColor,
+      color: secColorDark,
     ),
   ),
 );
