@@ -1,4 +1,3 @@
-import 'package:cryptocurrency_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
@@ -8,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 import 'package:cryptocurrency_app/features/constants.dart';
+import 'package:cryptocurrency_app/generated/l10n.dart';
 import 'package:cryptocurrency_app/models/user_settings.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
 import 'package:cryptocurrency_app/router/router.dart';
@@ -64,7 +64,7 @@ class _CryptoCoinAppState extends State<CryptoCoinApp> {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          locale: Locale('ru'),
+          locale: Locale(us.userLocale),
           supportedLocales: S.delegate.supportedLocales,
           routerConfig: _appRouter.config(
             navigatorObservers: () => [

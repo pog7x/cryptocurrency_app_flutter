@@ -1,4 +1,3 @@
-import 'package:cryptocurrency_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
@@ -7,6 +6,7 @@ import 'package:get_it/get_it.dart';
 
 import 'package:cryptocurrency_app/features/constants.dart';
 import 'package:cryptocurrency_app/features/crypto_coin_list/crypto_coin_list.dart';
+import 'package:cryptocurrency_app/generated/l10n.dart';
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/liked_crypto_coins.dart';

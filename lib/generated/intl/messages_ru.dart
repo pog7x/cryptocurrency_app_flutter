@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("Поиск"),
         "selectCurrency":
             MessageLookupByLibrary.simpleMessage("Выберите валюту"),
+        "selectLanguage": MessageLookupByLibrary.simpleMessage("Выберите язык"),
         "selectThemeMode":
             MessageLookupByLibrary.simpleMessage("Выберите тему"),
         "settings": MessageLookupByLibrary.simpleMessage("Настройки"),

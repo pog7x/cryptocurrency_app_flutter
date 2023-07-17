@@ -14,5 +14,6 @@
   "egBtc": "e.g., BTC",
   "dark": "Dark",
   "light": "Light",
-  "system": "System"
+  "system": "System",
+  "selectLanguage": "Select language"
 }
