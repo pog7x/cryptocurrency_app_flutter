@@ -1,0 +1,19 @@
+{
+  "cryptocurrencies": "Криптовалюта",
+  "home": "Домой",
+  "search": "Поиск",
+  "settings": "Настройки",
+  "somethingWentWrong": "Что-то пошло не так",
+  "pleaseTryAgainLater": "Пожалуйста, попробуйте, позже",
+  "tryAgain": "Попробовать снова",
+  "selectThemeMode": "Выберите тему",
+  "selectCurrency": "Выберите валюту",
+  "hight24Hour": "Наибольшее за 24 часа",
+  "low24Hour": "Наименьшее за 24 часа",
+  "putYourSearchRequest": "Введите ваш запрос:",
+  "egBtc": "например, BTC",
+  "dark": "Тёмная",
+  "light": "Светлая",
+  "system": "Системная",
+  "selectLanguage": "Выберите язык"
+}

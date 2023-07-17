@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:cryptocurrency_app/features/crypto_coin_list/crypto_coin_list.dart';
+import 'package:cryptocurrency_app/generated/l10n.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/liked_crypto_coins.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
@@ -38,7 +39,7 @@ class _CryptoCoinListScreenState extends State<CryptoCoinListScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Cryptocurrency App'),
+        title: Text(S.of(context).cryptocurrencies),
       ),
       body: RefreshIndicator(
         onRefresh: () async {

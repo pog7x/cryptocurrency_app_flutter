@@ -1,0 +1,19 @@
+{
+  "cryptocurrencies": "Cryptocurrencies",
+  "home": "Home",
+  "search": "Search",
+  "settings": "Settings",
+  "somethingWentWrong": "Something went wrong",
+  "pleaseTryAgainLater": "Please try again later",
+  "tryAgain": "Try again",
+  "selectThemeMode": "Select theme mode",
+  "selectCurrency": "Select currency",
+  "hight24Hour": "Hight 24 Hour",
+  "low24Hour": "Low 24 Hour",
+  "putYourSearchRequest": "Put your search request:",
+  "egBtc": "e.g., BTC",
+  "dark": "Dark",
+  "light": "Light",
+  "system": "System",
+  "selectLanguage": "Select language"
+}

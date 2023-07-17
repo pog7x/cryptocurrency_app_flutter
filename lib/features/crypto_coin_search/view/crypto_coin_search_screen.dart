@@ -6,6 +6,7 @@ import 'package:get_it/get_it.dart';
 
 import 'package:cryptocurrency_app/features/constants.dart';
 import 'package:cryptocurrency_app/features/crypto_coin_list/crypto_coin_list.dart';
+import 'package:cryptocurrency_app/generated/l10n.dart';
 import 'package:cryptocurrency_app/models/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/crypto_coin.dart';
 import 'package:cryptocurrency_app/repositories/liked_crypto_coins.dart';
@@ -32,14 +33,14 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Search'),
+        title: Text(S.of(context).search),
         leading: const AutoLeadingButton(),
       ),
       body: Center(
         child: Column(
           children: [
             const SizedBox(height: 10),
-            const Text('Put your search request:'),
+            Text(S.of(context).putYourSearchRequest),
             Container(
               padding: const EdgeInsets.all(16),
               child: TypeAheadField(
@@ -78,8 +79,8 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
                   focusNode: focusNode,
                   onTapOutside: (PointerDownEvent event) => focusNode.unfocus(),
                   style: theme.textTheme.labelMedium,
-                  decoration: const InputDecoration(
-                    hintText: 'e.g., BTC',
+                  decoration: InputDecoration(
+                    hintText: S.of(context).egBtc,
                   ),
                 ),
                 suggestionsCallback: (String pattern) async {
