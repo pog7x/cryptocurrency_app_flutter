@@ -1,4 +1,12 @@
-final allCryptoCoins = [
+const String currencyItemUSD = 'USD';
+const String currencyItemEUR = 'EUR';
+const String currencyItemJPY = 'JPY';
+
+const String appThemeModeDark = 'Dark';
+const String appThemeModeLight = 'Light';
+const String appThemeModeSystem = 'System';
+
+const allCryptoCoins = [
   'BTC',
   'ETH',
   'LTC',

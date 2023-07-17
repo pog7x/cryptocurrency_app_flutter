@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
+import 'package:cryptocurrency_app/features/constants.dart';
 import 'package:cryptocurrency_app/features/user_settings/user_settings.dart';
 import 'package:cryptocurrency_app/models/user_settings.dart';
 import 'package:cryptocurrency_app/repositories/user_settings.dart';
@@ -18,8 +19,16 @@ class UserSettingsScreen extends StatefulWidget {
 }
 
 class _UserSettingsScreenState extends State<UserSettingsScreen> {
-  final currencyItems = <String>['USD', 'EUR', 'JPY'];
-  final appThemeModeItems = <String>['Dark', 'Light', 'System'];
+  final currencyItems = <String>[
+    currencyItemUSD,
+    currencyItemEUR,
+    currencyItemJPY,
+  ];
+  final appThemeModeItems = <String>[
+    appThemeModeDark,
+    appThemeModeLight,
+    appThemeModeSystem,
+  ];
 
   final _userSettingsBloc = UserSettingsBloc(
     GetIt.I<AbstractUserSettingsRepository>(),

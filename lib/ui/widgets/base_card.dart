@@ -7,6 +7,7 @@ class BaseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.symmetric(
         horizontal: 16,
@@ -16,7 +17,7 @@ class BaseCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: const Color.fromARGB(255, 21, 21, 21),
+        color: theme.cardColor,
       ),
       child: child,
     );
