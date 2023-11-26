@@ -42,10 +42,14 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
             const SizedBox(height: 10),
             Text(S.of(context).putYourSearchRequest),
             Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.only(left: 16, right: 16),
               child: TypeAheadField(
+                focusNode: focusNode,
                 hideKeyboardOnDrag: true,
-                hideSuggestionsOnKeyboardHide: false,
+                hideWithKeyboard: false,
+                hideOnUnfocus: false,
+                hideOnSelect: false,
+                hideOnEmpty: false,
                 loadingBuilder: (BuildContext context) => Center(
                   child: Container(
                     alignment: Alignment.center,
@@ -57,7 +61,7 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
                     child: const CircularProgressIndicator(),
                   ),
                 ),
-                noItemsFoundBuilder: (BuildContext context) => Center(
+                emptyBuilder: (BuildContext context) => Center(
                   child: Container(
                     alignment: Alignment.center,
                     width: double.infinity,
@@ -66,7 +70,7 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
                       color: theme.scaffoldBackgroundColor,
                     ),
                     child: Text(
-                      'No items found',
+                      S.of(context).noItemsFound,
                       style: theme.textTheme.bodyMedium,
                     ),
                   ),
@@ -74,15 +78,28 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
                 itemSeparatorBuilder: (context, i) => const Divider(
                   height: .5,
                 ),
-                textFieldConfiguration: TextFieldConfiguration(
-                  autofocus: true,
-                  focusNode: focusNode,
-                  onTapOutside: (PointerDownEvent event) => focusNode.unfocus(),
-                  style: theme.textTheme.labelMedium,
-                  decoration: InputDecoration(
-                    hintText: S.of(context).egBtc,
-                  ),
-                ),
+                // textFieldConfiguration: TextFieldConfiguration(
+                //   autofocus: true,
+                //   focusNode: focusNode,
+                //   onTapOutside: (PointerDownEvent event) => focusNode.unfocus(),
+                //   style: theme.textTheme.labelMedium,
+                //   decoration: InputDecoration(
+                //     hintText: S.of(context).egBtc,
+                //   ),
+                // ),
+                builder: (context, controller, focusNode) {
+                  return TextField(
+                    controller: controller,
+                    focusNode: focusNode,
+                    onTapOutside: (PointerDownEvent event) {
+                      focusNode.unfocus();
+                    },
+                    autofocus: true,
+                    decoration: InputDecoration(
+                      hintText: S.of(context).egBtc,
+                    ),
+                  );
+                },
                 suggestionsCallback: (String pattern) async {
                   final searchRequest = _coinsSearchRequest(pattern);
                   if (searchRequest.isNotEmpty) {
@@ -101,7 +118,7 @@ class _CryptoCoinSearchScreenState extends State<CryptoCoinSearchScreen> {
                         likedCryptoCoinsRepo.getLikedCryptoCoins(),
                   );
                 },
-                onSuggestionSelected: (CryptoCoin coin) {
+                onSelected: (CryptoCoin coin) {
                   AutoRouter.of(context).push(
                     CryptoCoinRoute(
                       cryptoCoin: coin,

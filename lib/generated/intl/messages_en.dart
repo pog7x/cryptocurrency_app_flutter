@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
         "low24Hour": MessageLookupByLibrary.simpleMessage("Low 24 Hour"),
+        "noItemsFound": MessageLookupByLibrary.simpleMessage("No items found"),
         "pleaseTryAgainLater":
             MessageLookupByLibrary.simpleMessage("Please try again later"),
         "putYourSearchRequest":

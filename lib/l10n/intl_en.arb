@@ -15,5 +15,6 @@
   "dark": "Dark",
   "light": "Light",
   "system": "System",
-  "selectLanguage": "Select language"
+  "selectLanguage": "Select language",
+  "noItemsFound": "No items found"
 }

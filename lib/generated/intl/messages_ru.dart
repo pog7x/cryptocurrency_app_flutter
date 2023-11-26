@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "light": MessageLookupByLibrary.simpleMessage("Светлая"),
         "low24Hour":
             MessageLookupByLibrary.simpleMessage("Наименьшее за 24 часа"),
+        "noItemsFound": MessageLookupByLibrary.simpleMessage("No items found"),
         "pleaseTryAgainLater": MessageLookupByLibrary.simpleMessage(
             "Пожалуйста, попробуйте, позже"),
         "putYourSearchRequest":

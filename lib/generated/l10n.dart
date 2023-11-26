@@ -1,9 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-
 import 'package:flutter/material.dart';
-
 import 'package:intl/intl.dart';
-
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -218,6 +215,16 @@ class S {
     return Intl.message(
       'Select language',
       name: 'selectLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No items found`
+  String get noItemsFound {
+    return Intl.message(
+      'No items found',
+      name: 'noItemsFound',
       desc: '',
       args: [],
     );

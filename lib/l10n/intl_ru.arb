@@ -15,5 +15,6 @@
   "dark": "Тёмная",
   "light": "Светлая",
   "system": "Системная",
-  "selectLanguage": "Выберите язык"
+  "selectLanguage": "Выберите язык",
+  "noItemsFound": "No items found"
 }
